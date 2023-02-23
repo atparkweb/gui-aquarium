@@ -4,15 +4,10 @@ import java.net.URL;
 
 public class Main {
     private static void renderFish(JPanel panel, Graphics graphics) {
-        try {
-            URL iconPath = Main.class.getClassLoader().getResource("sprites/fishTile_080.png");
-            if (iconPath != null) {
-                ImageIcon fishSprite = new ImageIcon(iconPath);
-                fishSprite.paintIcon(panel, graphics, 80, 80);
-            }
-        } catch (NullPointerException e) {
-            System.out.println("Unable to load icon");
-        }
+        URL resourceURL = Main.class.getClassLoader().getResource("sprites/fishTile_080.png");
+        Fish fish = new Fish(resourceURL);
+        ImageIcon fishSprite = fish.getSprite();
+        fishSprite.paintIcon(panel, graphics, fish.getX(), fish.getY());
     }
 
     public static void main(String[] args) {
