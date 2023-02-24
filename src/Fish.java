@@ -1,12 +1,12 @@
-import javax.swing.*;
+import javax.swing.ImageIcon;
 import java.net.URL;
 
 public class Fish implements Drawable {
-    private final ImageIcon sprite;
-    public int x;
-    public int y;
+    ImageIcon sprite;
+    private int x;
+    private int y;
 
-    public Fish() throws NullPointerException {
+    public Fish() {
         this(80, 80);
     }
 
@@ -20,18 +20,17 @@ public class Fish implements Drawable {
         this.x = x; this.y = y;
     }
 
-    @Override
-    public void render(Window window) {
-        this.sprite.paintIcon(window.panel, window.graphics, this.getX(), this.getY());
+    public void move(int x, int y) {
+        this.x = x;
+        this.y = y;
     }
 
+    @Override
     public ImageIcon getSprite() { return this.sprite; }
 
-    public int getX() {
-        return this.x;
-    }
+    @Override
+    public int getX() { return this.x; }
 
-    public int getY() {
-        return this.y;
-    }
+    @Override
+    public int getY() { return this.y; }
 }
