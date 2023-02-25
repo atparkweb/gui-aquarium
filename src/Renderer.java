@@ -1,14 +1,26 @@
+import javax.swing.JPanel;
 import javax.swing.ImageIcon;
+import java.awt.*;
 
 public class Renderer {
-    Window window;
+    JPanel panel;
+    Graphics graphics;
 
     public Renderer(Window window) {
-        this.window = window;
+        int width = window.getWidth();
+        int height = window.getHeight();
+
+        panel = new JPanel();
+        panel.setBounds(0, 0, width, height);
+        panel.setBackground(Color.blue);
+
+        window.add(panel);
+
+        graphics = window.getGraphics();
     }
 
     public void render(Drawable drawable) {
         ImageIcon sprite = drawable.getSprite();
-        sprite.paintIcon(this.window.panel, this.window.graphics, drawable.getX(), drawable.getY());
+        sprite.paintIcon(panel, graphics, drawable.getX(), drawable.getY());
     }
 }
