@@ -1,30 +1,18 @@
-import javax.swing.*;
-import java.awt.*;
+import javax.swing.JFrame;
 
-public class Window {
+public class Window extends JFrame {
     final int FRAME_WIDTH = 800;
     final int FRAME_HEIGHT = 600;
 
     private static Window instance;
-    public JFrame frame;
-    public JPanel panel;
-    public Graphics graphics;
 
     private Window() {
-        this.panel = new JPanel();
-        this.panel.setBounds(0, 0, FRAME_WIDTH, FRAME_HEIGHT);
-        this.panel.setBackground(Color.blue);
-
-        this.frame = new JFrame();
-        frame.add(panel);
-        this.frame.setBounds(10, 10, FRAME_WIDTH, FRAME_HEIGHT);
-        this.frame.setLayout(null);
-        this.frame.setTitle("GUI Aquarium");
-        this.frame.setResizable(false);
-        this.frame.setVisible(true);
-        this.frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
-        graphics = this.frame.getGraphics();
+        this.setBounds(10, 10, FRAME_WIDTH, FRAME_HEIGHT);
+        this.setLayout(null);
+        this.setTitle("GUI Aquarium");
+        this.setResizable(false);
+        this.setVisible(true);
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 
     public static synchronized Window getInstance() {
