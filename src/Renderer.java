@@ -1,25 +1,65 @@
-import javax.swing.JPanel;
-import javax.swing.ImageIcon;
+import javax.swing.*;
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+import java.util.ArrayList;
 
-public class Renderer extends JPanel {
-    Graphics graphics;
+public class Renderer extends JPanel implements ActionListener, KeyListener {
+    private final Graphics graphics;
+    private final Timer timer;
+    private final ArrayList<Animal> animals;
 
-    public Renderer(Window window) {
+    public Renderer(Window window, ArrayList<Animal> animals) {
         int width = window.getWidth();
         int height = window.getHeight();
 
-        this.setBounds(0, 0, width, height);
-        this.setBackground(Color.blue);
-
+        this.animals = animals;
+        setBounds(0, 0, width, height);
         window.add(this);
 
         graphics = window.getGraphics();
+
+        addKeyListener(this);
+        setFocusable(true);
+        timer = new Timer(10, this);
+
+        paint();
     }
 
-    public void render(Sprite sprite) {
-        ImageIcon icon = sprite.getIcon();
-        icon.paintIcon(this, graphics, sprite.getX(), sprite.getY());
+    public void paint() {
+        setBackground(Color.blue);
+
+        for (Animal animal : animals) {
+            ImageIcon icon = animal.getIcon();
+            animal.move();
+            icon.paintIcon(this, graphics, animal.getX(), animal.getY());
+        }
+
+        graphics.dispose();
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        timer.start();
+
+        repaint();
+    }
+
+    @Override
+    public void keyTyped(KeyEvent e) {
+
+    }
+
+    @Override
+    public void keyPressed(KeyEvent e) {
+
+    }
+
+    @Override
+    public void keyReleased(KeyEvent e) {
+
     }
 }

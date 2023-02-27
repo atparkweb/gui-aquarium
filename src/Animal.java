@@ -1,9 +1,11 @@
 public class Animal extends Sprite {
-    private int vx = 1;
-    private int vy = 1;
+    private final int vx;
+    private final int vy;
 
     public Animal(int x, int y, String iconPath) {
         super(x, y, iconPath);
+        vx = 10;
+        vy = 0;
     }
 
     public void move() {

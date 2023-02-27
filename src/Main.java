@@ -1,10 +1,15 @@
+import java.util.ArrayList;
+
 public class Main {
     public static void main(String[] args) {
         Window window = Window.getInstance();
 
-        Renderer renderer = new Renderer(window);
+        Animal fish = new Fish(80, 80);
+        Animal piranha = new Piranha(80, 240);
+        ArrayList<Animal> animals = new ArrayList<>();
+        animals.add(fish);
+        animals.add(piranha);
 
-        renderer.render(new Fish(80, 80));
-        renderer.render(new Piranha(80, 240));
+        new Renderer(window, animals);
     }
 }
