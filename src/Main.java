@@ -4,6 +4,7 @@ public class Main {
 
         Renderer renderer = new Renderer(window);
 
-        renderer.render(new Fish());
+        renderer.render(new Fish(80, 80));
+        renderer.render(new Piranha(100, 100));
     }
 }
