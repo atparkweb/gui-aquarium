@@ -1,8 +1,8 @@
 import javax.swing.ImageIcon;
 import java.net.URL;
 
-public class Fish implements Drawable {
-    ImageIcon sprite;
+public class Fish implements Sprite {
+    ImageIcon icon;
     private int x;
     private int y;
 
@@ -11,12 +11,12 @@ public class Fish implements Drawable {
     }
 
     public Fish(int x, int y) throws NullPointerException {
-        final String spritePath = "sprites/fishTile_080.png";
+        final String iconPath = "sprites/fishTile_080.png";
 
-        URL resourceURL = Fish.class.getClassLoader().getResource(spritePath);
+        URL resourceURL = Fish.class.getClassLoader().getResource(iconPath);
 
-        if (resourceURL == null) throw new NullPointerException("Unable to load resource: " + spritePath);
-        this.sprite = new ImageIcon(resourceURL);
+        if (resourceURL == null) throw new NullPointerException("Unable to load resource: " + iconPath);
+        this.icon = new ImageIcon(resourceURL);
         this.x = x; this.y = y;
     }
 
@@ -26,7 +26,7 @@ public class Fish implements Drawable {
     }
 
     @Override
-    public ImageIcon getSprite() { return this.sprite; }
+    public ImageIcon getIcon() { return this.icon; }
 
     @Override
     public int getX() { return this.x; }

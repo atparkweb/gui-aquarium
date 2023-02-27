@@ -18,8 +18,8 @@ public class Renderer extends JPanel {
         graphics = window.getGraphics();
     }
 
-    public void render(Drawable drawable) {
-        ImageIcon sprite = drawable.getSprite();
-        sprite.paintIcon(this, graphics, drawable.getX(), drawable.getY());
+    public void render(Sprite sprite) {
+        ImageIcon icon = sprite.getIcon();
+        icon.paintIcon(this, graphics, sprite.getX(), sprite.getY());
     }
 }

@@ -1,7 +1,7 @@
 import javax.swing.ImageIcon;
 
-public interface Drawable {
+public interface Sprite {
     int getX();
     int getY();
-    ImageIcon getSprite();
+    ImageIcon getIcon();
 }
