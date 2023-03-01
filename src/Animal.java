@@ -8,7 +8,7 @@ public class Animal extends Sprite {
         vy = 0;
     }
 
-    public void move() {
+    public void update() {
         x += vx;
         y += vy;
     }

@@ -9,14 +9,15 @@ import java.util.ArrayList;
 
 public class Renderer extends JPanel implements ActionListener, KeyListener {
     private final Graphics graphics;
-    private final Timer timer;
-    private final ArrayList<Animal> animals;
+    private Timer timer;
+    private final ArrayList<Sprite> spriteList;
+    private boolean isPlaying = false;
 
-    public Renderer(Window window, ArrayList<Animal> animals) {
+    public Renderer(Window window, ArrayList<Sprite> spriteList) {
         int width = window.getWidth();
         int height = window.getHeight();
 
-        this.animals = animals;
+        this.spriteList = spriteList;
         setBounds(0, 0, width, height);
         window.add(this);
 
@@ -24,7 +25,6 @@ public class Renderer extends JPanel implements ActionListener, KeyListener {
 
         addKeyListener(this);
         setFocusable(true);
-        timer = new Timer(10, this);
 
         paint();
     }
@@ -32,18 +32,42 @@ public class Renderer extends JPanel implements ActionListener, KeyListener {
     public void paint() {
         setBackground(Color.blue);
 
-        for (Animal animal : animals) {
-            ImageIcon icon = animal.getIcon();
-            animal.move();
-            icon.paintIcon(this, graphics, animal.getX(), animal.getY());
+        for (Sprite sprite : spriteList) {
+            sprite.update();
+            ImageIcon icon = sprite.getIcon();
+            icon.paintIcon(this, graphics, sprite.getX(), sprite.getY());
         }
 
         graphics.dispose();
     }
 
+    public void start() {
+        if (timer == null) {
+            timer = new Timer(10, this);
+        } else {
+            timer.start();
+        }
+
+        isPlaying = true;
+    }
+
+    public void stop() {
+        if (timer == null) {
+            timer = new Timer(10, this);
+        } else {
+            timer.stop();
+        }
+
+        isPlaying = false;
+    }
+
     @Override
     public void actionPerformed(ActionEvent e) {
-        timer.start();
+        if (isPlaying) {
+            start();
+        } else {
+            stop();
+        }
 
         repaint();
     }
@@ -55,7 +79,9 @@ public class Renderer extends JPanel implements ActionListener, KeyListener {
 
     @Override
     public void keyPressed(KeyEvent e) {
-
+        if (e.getKeyCode() == KeyEvent.VK_SPACE) {
+            isPlaying = !isPlaying;
+        }
     }
 
     @Override

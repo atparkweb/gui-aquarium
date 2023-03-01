@@ -1,7 +1,7 @@
 import javax.swing.ImageIcon;
 import java.net.URL;
 
-public class Sprite {
+public abstract class Sprite {
     protected int x;
     protected int y;
     private final ImageIcon icon;
@@ -14,15 +14,13 @@ public class Sprite {
         this.y = y;
     }
 
-    public int getX() {
-        return x;
-    }
-
+    public int getX() { return x; }
     public int getY() {
         return y;
     }
-
     public ImageIcon getIcon() {
         return icon;
     }
+
+    abstract public void update();
 }

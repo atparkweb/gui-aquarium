@@ -6,7 +6,7 @@ public class Main {
 
         Animal fish = new Fish(80, 80);
         Animal piranha = new Piranha(80, 240);
-        ArrayList<Animal> animals = new ArrayList<>();
+        ArrayList<Sprite> animals = new ArrayList<>();
         animals.add(fish);
         animals.add(piranha);
 
