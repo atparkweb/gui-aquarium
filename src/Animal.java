@@ -1,14 +1,22 @@
 public class Animal extends Sprite {
-    private final int vx;
-    private final int vy;
+    private int vx;
+    private int vy;
 
-    public Animal(int x, int y, String iconPath) {
+    public Animal(int x, int y, int vx, int vy, String iconPath) {
         super(x, y, iconPath);
-        vx = 10;
-        vy = 0;
+        this.vx = vx;
+        this.vy = vy;
     }
 
     public void update() {
+        if (x > 800 || x < 0) {
+            vx = -vx;
+        }
+
+        if (y > 600 || y < 0) {
+            vy = -vy;
+        }
+
         x += vx;
         y += vy;
     }
