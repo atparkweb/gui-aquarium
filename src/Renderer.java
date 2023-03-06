@@ -1,91 +1,72 @@
 import javax.swing.*;
-import java.awt.Color;
-import java.awt.Graphics;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
+import java.awt.*;
+import java.time.Duration;
+import java.time.Instant;
 import java.util.ArrayList;
 
-public class Renderer extends JPanel implements ActionListener, KeyListener {
-    private final Graphics graphics;
-    private Timer timer;
+public class Renderer extends JPanel {
     private final ArrayList<Sprite> spriteList;
-    private boolean isPlaying = false;
+    private final Clock clock;
+    private Instant startedAt;
 
-    public Renderer(Window window, ArrayList<Sprite> spriteList) {
-        int width = window.getWidth();
-        int height = window.getHeight();
-
+    public Renderer(ArrayList<Sprite> spriteList, long durationInSeconds) {
         this.spriteList = spriteList;
-        setBounds(0, 0, width, height);
-        window.add(this);
 
-        graphics = window.getGraphics();
+        clock = new Clock();
 
-        addKeyListener(this);
-        setFocusable(true);
+        Duration duration = Duration.ofSeconds(durationInSeconds);
 
-        paint();
+        clock.setCallback(clock -> {
+            if (startedAt == null) {
+                startedAt = Instant.now();
+            }
+
+            // To limit animation to a certain duration
+            Duration runtime = Duration.between(startedAt, Instant.now());
+            double progress = runtime.toMillis() / (double) duration.toMillis();
+
+            if (progress >= 1.0) {
+                stopAnimation();
+            }
+
+            repaint();
+        });
     }
 
-    public void paint() {
-        setBackground(Color.blue);
+    protected void stopAnimation() {
+        clock.stop();
+    }
+    protected void startAnimation() {
+        clock.start();
+    }
 
+    @Override
+    public Dimension getPreferredSize() {
+        return new Dimension(800, 600);
+    }
+
+    @Override
+    public void addNotify() {
+        super.addNotify();
+        startAnimation();
+    }
+
+    @Override
+    public void removeNotify() {
+        super.removeNotify();
+        stopAnimation();
+    }
+
+    @Override
+    public void paint(Graphics g) {
+        super.paint(g);
+        setBackground(Color.blue);
         for (Sprite sprite : spriteList) {
             sprite.update();
             ImageIcon icon = sprite.getIcon();
-            icon.paintIcon(this, graphics, sprite.getX(), sprite.getY());
+            icon.paintIcon(this, g, sprite.getX(), sprite.getY());
         }
 
-        graphics.dispose();
-    }
-
-    public void start() {
-        if (timer == null) {
-            timer = new Timer(10, this);
-        } else {
-            timer.start();
-        }
-
-        isPlaying = true;
-    }
-
-    public void stop() {
-        if (timer == null) {
-            timer = new Timer(10, this);
-        } else {
-            timer.stop();
-        }
-
-        isPlaying = false;
-    }
-
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        if (isPlaying) {
-            start();
-        } else {
-            stop();
-        }
-
-        repaint();
-    }
-
-    @Override
-    public void keyTyped(KeyEvent e) {
-
-    }
-
-    @Override
-    public void keyPressed(KeyEvent e) {
-        if (e.getKeyCode() == KeyEvent.VK_SPACE) {
-            isPlaying = !isPlaying;
-        }
-    }
-
-    @Override
-    public void keyReleased(KeyEvent e) {
-
+        g.dispose();
     }
 }
