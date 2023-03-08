@@ -9,9 +9,12 @@ public class Animal {
     private Sprite sprite;
     private String[] icons;
     private final AnimalType type;
+    private final Window frame;
 
     public Animal(int x, int y, int vx, int vy, AnimalType type) {
         this.type = type;
+
+        frame = Window.getInstance();
 
         try {
             icons = Icon.getIcons(type);
@@ -33,11 +36,11 @@ public class Animal {
             return;
         }
 
-        if (x > 800 || x < 0) {
+        if (x > frame.getWidth() - sprite.getWidth() || x < 0) {
             vx = -vx;
         }
 
-        if (y > 600 || y < 0) {
+        if (y > frame.getHeight() - sprite.getHeight() || y < 0) {
             vy = -vy;
         }
 
