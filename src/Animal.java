@@ -8,18 +8,23 @@ public class Animal {
     private boolean isAlive = true;
     private Sprite sprite;
     private String[] icons;
+    private final AnimalType type;
 
     public Animal(int x, int y, int vx, int vy, AnimalType type) {
+        this.type = type;
+
         try {
             icons = Icon.getIcons(type);
-            sprite = new Sprite(icons[0]);
-            this.x = x;
-            this.y = y;
-            this.vx = vx;
-            this.vy = vy;
         } catch (InvalidArgumentException ex) {
             System.out.println(ex.getMessage());
+            return;
         }
+
+        sprite = new Sprite(icons[0]);
+        this.x = x;
+        this.y = y;
+        this.vx = vx;
+        this.vy = vy;
     }
 
     public void update() {
@@ -47,4 +52,5 @@ public class Animal {
     public int getX() { return x; }
     public int getY() { return y; }
     public Sprite getSprite() { return sprite; }
+    public AnimalType getType() { return type; }
 }

@@ -11,7 +11,7 @@ public class Sprite {
     }
 
     private void loadIcon() throws NullPointerException {
-        URL resourceURL = Fish.class.getClassLoader().getResource(iconPath);
+        URL resourceURL = Sprite.class.getClassLoader().getResource(iconPath);
         if (resourceURL == null) throw new NullPointerException("Unable to load resource: " + iconPath);
         icon = new ImageIcon(resourceURL);
     }
