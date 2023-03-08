@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Main {
     public static void main(String[] args) {
-        ArrayList<Animal> animals = SpawningPool.getAnimals();
+        ArrayList<Animal> animals = SpawningPool.getAnimals(5, 2);
 
         EventQueue.invokeLater(() -> {
             JFrame frame = Window.getInstance();
