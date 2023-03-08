@@ -5,12 +5,12 @@ import java.time.Instant;
 import java.util.ArrayList;
 
 public class Renderer extends JPanel {
-    private final ArrayList<Sprite> spriteList;
+    private final ArrayList<Animal> animalList;
     private final Clock clock;
     private Instant startedAt;
 
-    public Renderer(ArrayList<Sprite> spriteList, long durationInSeconds) {
-        this.spriteList = spriteList;
+    public Renderer(ArrayList<Animal> animalList, long durationInSeconds) {
+        this.animalList = animalList;
 
         clock = new Clock();
 
@@ -27,6 +27,9 @@ public class Renderer extends JPanel {
 
             if (progress >= 1.0) {
                 stopAnimation();
+                for (Animal animal : animalList) {
+                    animal.kill();
+                }
             }
 
             repaint();
@@ -61,10 +64,10 @@ public class Renderer extends JPanel {
     public void paint(Graphics g) {
         super.paint(g);
         setBackground(Color.blue);
-        for (Sprite sprite : spriteList) {
-            sprite.update();
-            ImageIcon icon = sprite.getIcon();
-            icon.paintIcon(this, g, sprite.getX(), sprite.getY());
+        for (Animal animal : animalList) {
+            animal.update();
+            ImageIcon icon = animal.getSprite().getIcon();
+            icon.paintIcon(this, g, animal.getX(), animal.getY());
         }
 
         g.dispose();

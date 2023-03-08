@@ -6,7 +6,7 @@ public class Main {
     public static void main(String[] args) {
         Animal fish = new Fish(80, 80, 2, 1);
         Animal piranha = new Piranha(80, 240, 1, 2);
-        ArrayList<Sprite> animals = new ArrayList<>();
+        ArrayList<Animal> animals = new ArrayList<>();
         animals.add(fish);
         animals.add(piranha);
 
@@ -16,7 +16,7 @@ public class Main {
             frame.setResizable(false);
             frame.setFocusable(true);
             frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-            Renderer renderer = new Renderer(animals, 60);
+            Renderer renderer = new Renderer(animals, 2);
             frame.add(renderer);
             frame.pack();
             frame.setLocationRelativeTo(null);
