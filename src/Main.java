@@ -11,12 +11,8 @@ public class Main {
         animals.add(piranha);
 
         EventQueue.invokeLater(() -> {
-            JFrame frame = new JFrame();
-            frame.setTitle("GUI Aquarium");
-            frame.setResizable(false);
-            frame.setFocusable(true);
-            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-            Renderer renderer = new Renderer(animals, 2);
+            JFrame frame = Window.getInstance();
+            Renderer renderer = new Renderer(animals, 2, frame.getWidth(), frame.getHeight());
             frame.add(renderer);
             frame.pack();
             frame.setLocationRelativeTo(null);

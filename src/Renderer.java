@@ -7,10 +7,14 @@ import java.util.ArrayList;
 public class Renderer extends JPanel {
     private final ArrayList<Animal> animalList;
     private final Clock clock;
+    private final int width;
+    private final int height;
     private Instant startedAt;
 
-    public Renderer(ArrayList<Animal> animalList, long durationInSeconds) {
+    public Renderer(ArrayList<Animal> animalList, long durationInSeconds, int width, int height) {
         this.animalList = animalList;
+        this.width = width;
+        this.height = height;
 
         clock = new Clock();
 
@@ -45,7 +49,7 @@ public class Renderer extends JPanel {
 
     @Override
     public Dimension getPreferredSize() {
-        return new Dimension(800, 600);
+        return new Dimension(width, height);
     }
 
     @Override
