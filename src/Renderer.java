@@ -1,5 +1,6 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.image.BufferedImage;
 import java.time.Duration;
 import java.time.Instant;
 import java.util.ArrayList;
@@ -7,11 +8,13 @@ import java.util.ArrayList;
 public class Renderer extends JPanel {
     private final ArrayList<Animal> animalList;
     private final Clock clock;
+    private final SpriteSheet spriteSheet;
     private final int width;
     private final int height;
     private Instant startedAt;
 
-    public Renderer(ArrayList<Animal> animalList, long durationInSeconds, int width, int height) {
+    public Renderer(SpriteSheet spriteSheet, ArrayList<Animal> animalList, long durationInSeconds, int width, int height) {
+        this.spriteSheet = spriteSheet;
         this.animalList = animalList;
         this.width = width;
         this.height = height;
@@ -70,8 +73,20 @@ public class Renderer extends JPanel {
         setBackground(Color.blue);
         for (Animal animal : animalList) {
             animal.update();
-            ImageIcon icon = animal.getSprite().getIcon();
-            icon.paintIcon(this, g, animal.getX(), animal.getY());
+            BufferedImage sprite = null;
+            switch (animal.getType()) {
+                case FISH:
+                    sprite = spriteSheet.getFishSprite();
+                    break;
+                case PIRANHA:
+                    sprite = spriteSheet.getPiranhaSprite();
+                    break;
+                default:
+                    break;
+            }
+            if (sprite != null) {
+                g.drawImage(sprite, animal.getX(), animal.getY(), Color.BLUE, null);
+            }
         }
 
         g.dispose();
