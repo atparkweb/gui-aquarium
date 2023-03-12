@@ -12,8 +12,8 @@ public class Animal {
         this.type = type;
 
         frame = Window.getInstance();
-        SpriteDataStore dataStore = SpriteDataStore.getInstance();
-        sprite = dataStore.getSpriteData(SpriteSheet.getSpriteKey(type));
+        final SpriteDataStore dataStore = SpriteDataStore.getInstance();
+        sprite = dataStore.getSpriteData(SpriteSheet.getSpriteKey(type, isAlive));
 
         this.x = x;
         this.y = y;
@@ -41,4 +41,5 @@ public class Animal {
     public int getX() { return x; }
     public int getY() { return y; }
     public AnimalType getType() { return type; }
+    public boolean getIsAlive() { return isAlive; }
 }

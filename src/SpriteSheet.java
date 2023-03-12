@@ -24,20 +24,20 @@ public class SpriteSheet {
     }
 
     // TODO Make a dictionary of all types to images
-    public static String getSpriteKey(AnimalType type) {
+    public static String getSpriteKey(AnimalType type, boolean isAlive) {
         switch(type) {
             case FISH:
-                return "fishTile_080.png";
+                return isAlive ? "fishTile_080.png" : "fishTile_098.png";
             case PIRANHA:
-                return "fishTile_072.png";
+                return isAlive ? "fishTile_072.png" : "fishTile_090.png";
             default:
                 return "";
         }
     }
 
-    public BufferedImage getSpriteImage(AnimalType type) {
+    public BufferedImage getSpriteImage(AnimalType type, boolean isAlive) {
         SpriteDataStore ds = SpriteDataStore.getInstance();
-        SpriteProps sprite = ds.getSpriteData(getSpriteKey(type));
+        SpriteProps sprite = ds.getSpriteData(getSpriteKey(type, isAlive));
 
         return sheetImage.getSubimage(
             sprite.x,

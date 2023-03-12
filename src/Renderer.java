@@ -73,7 +73,7 @@ public class Renderer extends JPanel {
         setBackground(Color.blue);
         for (Animal animal : animalList) {
             animal.update();
-            BufferedImage spriteImage = spriteSheet.getSpriteImage(animal.getType());
+            BufferedImage spriteImage = spriteSheet.getSpriteImage(animal.getType(), animal.getIsAlive());
             g.drawImage(spriteImage, animal.getX(), animal.getY(), null, null);
         }
 
