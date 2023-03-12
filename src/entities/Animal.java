@@ -1,3 +1,10 @@
+package entities;
+
+import ui.Window;
+import graphics.SpriteDataStore;
+import graphics.SpriteProps;
+import graphics.SpriteSheet;
+
 public class Animal {
     private int x;
     private int y;

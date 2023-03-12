@@ -1,3 +1,5 @@
+package graphics;
+
 import javax.xml.stream.XMLInputFactory;
 import javax.xml.stream.XMLStreamConstants;
 import javax.xml.stream.XMLStreamException;
@@ -12,14 +14,14 @@ import java.util.HashMap;
 
 public class SpriteDataStore {
     private static SpriteDataStore instance = null;
-    private HashMap<String, SpriteProps> data;
+    private final HashMap<String, SpriteProps> data;
 
     enum Attribute {
         NAME,
         X,
         Y,
         WIDTH,
-        HEIGHT;
+        HEIGHT
     }
 
     private SpriteDataStore() throws IOException, XMLStreamException, URISyntaxException {
@@ -27,7 +29,7 @@ public class SpriteDataStore {
 
         XMLInputFactory inputFactory = XMLInputFactory.newInstance();
 
-        URL resource = SpriteSheet.class.getResource("fishSpritesheet.xml");
+        URL resource = SpriteSheet.class.getResource("/fishSpritesheet.xml");
         if (resource == null) throw new NullPointerException("Unable to get resource from path: fishSpritesheet.xml");
 
         InputStream input = Files.newInputStream(Paths.get(resource.toURI()));

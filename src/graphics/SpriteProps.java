@@ -1,6 +1,9 @@
+package graphics;
+
 public class SpriteProps {
     int x; int y;
-    int width; int height;
+    public int width;
+    public int height;
 
     public SpriteProps(int x, int y, int width, int height) {
         this.x = x;

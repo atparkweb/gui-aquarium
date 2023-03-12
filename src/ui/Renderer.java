@@ -1,3 +1,9 @@
+package ui;
+
+import utils.Clock;
+import entities.Animal;
+import graphics.SpriteSheet;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;

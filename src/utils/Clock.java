@@ -1,3 +1,5 @@
+package utils;
+
 import javax.swing.Timer;
 
 public class Clock {
