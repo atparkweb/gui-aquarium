@@ -3,6 +3,7 @@ public class Animal {
     private int y;
     private int vx;
     private int vy;
+    private int health;
     private boolean isAlive = true;
     private final AnimalType type;
     private final Window frame;
@@ -19,9 +20,15 @@ public class Animal {
         this.y = y;
         this.vx = vx;
         this.vy = vy;
+        this.health = 100;
     }
 
     public void update() {
+        if (health == 0) {
+            isAlive = false;
+            return;
+        }
+
         if (x > frame.getWidth() - sprite.width || x < 0) {
             vx = -vx;
         }
