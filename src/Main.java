@@ -1,8 +1,8 @@
 import entities.Animal;
 import entities.SpawningPool;
 import graphics.SpriteSheet;
-import ui.Renderer;
-import ui.Window;
+import graphics.Renderer;
+import graphics.Window;
 
 import javax.swing.*;
 import java.awt.*;
@@ -15,7 +15,7 @@ public class Main {
         EventQueue.invokeLater(() -> {
             JFrame frame = Window.getInstance();
             SpriteSheet spriteSheet = new SpriteSheet("/fishSpritesheet.png");
-            ui.Renderer renderer = new Renderer(spriteSheet, animals, 30, frame.getWidth(), frame.getHeight());
+            Renderer renderer = new Renderer(spriteSheet, animals, 30, frame.getWidth(), frame.getHeight());
             frame.add(renderer);
             frame.pack();
             frame.setLocationRelativeTo(null);

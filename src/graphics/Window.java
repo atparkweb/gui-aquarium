@@ -1,4 +1,4 @@
-package ui;
+package graphics;
 
 import javax.swing.JFrame;
 

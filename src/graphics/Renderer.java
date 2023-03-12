@@ -1,8 +1,7 @@
-package ui;
+package graphics;
 
 import utils.Clock;
 import entities.Animal;
-import graphics.SpriteSheet;
 
 import javax.swing.*;
 import java.awt.*;

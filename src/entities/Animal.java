@@ -1,6 +1,6 @@
 package entities;
 
-import ui.Window;
+import graphics.Window;
 import graphics.SpriteDataStore;
 import graphics.SpriteProps;
 import graphics.SpriteSheet;
