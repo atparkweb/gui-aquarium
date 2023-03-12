@@ -23,29 +23,27 @@ public class SpriteSheet {
         }
     }
 
-    // TODO Make method that can get any sprite given a label and resolution
-    public BufferedImage getFishSprite() {
-        return sheetImage.getSubimage(320, 466, 54, 30);
-    }
-
-    // TODO Make method that can get any sprite given a label and resolution
-    public BufferedImage getPiranhaSprite() {
-        return sheetImage.getSubimage(320, 428, 54, 38);
-    }
-
-    public static int getSpriteWidth(AnimalType type) {
-        switch (type) {
-            case FISH: return 54;
-            case PIRANHA: return 54;
-            default: return 0;
+    // TODO Make a dictionary of all types to images
+    public static String getSpriteKey(AnimalType type) {
+        switch(type) {
+            case FISH:
+                return "fishTile_080.png";
+            case PIRANHA:
+                return "fishTile_072.png";
+            default:
+                return "";
         }
     }
 
-    public static int getSpriteHeight(AnimalType type) {
-        switch (type) {
-            case FISH: return 30;
-            case PIRANHA: return 38;
-            default: return 0;
-        }
+    public BufferedImage getSpriteImage(AnimalType type) {
+        SpriteDataStore ds = SpriteDataStore.getInstance();
+        SpriteProps sprite = ds.getSpriteData(getSpriteKey(type));
+
+        return sheetImage.getSubimage(
+            sprite.x,
+            sprite.y,
+            sprite.width,
+            sprite.height
+        );
     }
 }

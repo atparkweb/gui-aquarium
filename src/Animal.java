@@ -6,28 +6,27 @@ public class Animal {
     private boolean isAlive = true;
     private final AnimalType type;
     private final Window frame;
-    private final int width;
-    private final int height;
+    private final SpriteProps sprite;
 
     public Animal(int x, int y, int vx, int vy, AnimalType type) {
         this.type = type;
 
         frame = Window.getInstance();
+        SpriteDataStore dataStore = SpriteDataStore.getInstance();
+        sprite = dataStore.getSpriteData(SpriteSheet.getSpriteKey(type));
 
         this.x = x;
         this.y = y;
         this.vx = vx;
         this.vy = vy;
-        this.width = SpriteSheet.getSpriteWidth(type);
-        this.height = SpriteSheet.getSpriteHeight(type);
     }
 
     public void update() {
-        if (x > frame.getWidth() - width || x < 0) {
+        if (x > frame.getWidth() - sprite.width || x < 0) {
             vx = -vx;
         }
 
-        if (y > frame.getHeight() - height || y < 0) {
+        if (y > frame.getHeight() - sprite.height || y < 0) {
             vy = -vy;
         }
 

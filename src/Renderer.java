@@ -73,20 +73,8 @@ public class Renderer extends JPanel {
         setBackground(Color.blue);
         for (Animal animal : animalList) {
             animal.update();
-            BufferedImage sprite = null;
-            switch (animal.getType()) {
-                case FISH:
-                    sprite = spriteSheet.getFishSprite();
-                    break;
-                case PIRANHA:
-                    sprite = spriteSheet.getPiranhaSprite();
-                    break;
-                default:
-                    break;
-            }
-            if (sprite != null) {
-                g.drawImage(sprite, animal.getX(), animal.getY(), Color.BLUE, null);
-            }
+            BufferedImage spriteImage = spriteSheet.getSpriteImage(animal.getType());
+            g.drawImage(spriteImage, animal.getX(), animal.getY(), null, null);
         }
 
         g.dispose();
