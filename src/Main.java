@@ -9,7 +9,7 @@ public class Main {
         EventQueue.invokeLater(() -> {
             JFrame frame = Window.getInstance();
             SpriteSheet spriteSheet = new SpriteSheet("fishSpritesheet.png");
-            Renderer renderer = new Renderer(spriteSheet, animals, 20, frame.getWidth(), frame.getHeight());
+            Renderer renderer = new Renderer(spriteSheet, animals, 30, frame.getWidth(), frame.getHeight());
             frame.add(renderer);
             frame.pack();
             frame.setLocationRelativeTo(null);
