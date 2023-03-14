@@ -1,6 +1,6 @@
-package graphics;
+package atparkweb.graphics;
 
-import entities.AnimalType;
+import atparkweb.aquarium.AnimalType;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;

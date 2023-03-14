@@ -1,7 +1,7 @@
-package graphics;
+package atparkweb.graphics;
 
-import utils.Clock;
-import entities.Animal;
+import atparkweb.utils.Clock;
+import atparkweb.aquarium.Animal;
 
 import javax.swing.*;
 import java.awt.*;

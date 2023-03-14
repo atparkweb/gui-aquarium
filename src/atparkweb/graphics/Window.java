@@ -1,4 +1,4 @@
-package graphics;
+package atparkweb.graphics;
 
 import javax.swing.JFrame;
 

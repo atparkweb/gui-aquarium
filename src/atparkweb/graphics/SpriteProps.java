@@ -1,4 +1,4 @@
-package graphics;
+package atparkweb.graphics;
 
 public class SpriteProps {
     int x; int y;

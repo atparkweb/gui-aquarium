@@ -1,9 +1,9 @@
-package entities;
+package atparkweb.aquarium;
 
-import graphics.Window;
-import graphics.SpriteDataStore;
-import graphics.SpriteProps;
-import graphics.SpriteSheet;
+import atparkweb.graphics.Window;
+import atparkweb.graphics.SpriteDataStore;
+import atparkweb.graphics.SpriteProps;
+import atparkweb.graphics.SpriteSheet;
 
 public class Animal {
     private int x;

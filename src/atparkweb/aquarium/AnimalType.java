@@ -1,4 +1,4 @@
-package entities;
+package atparkweb.aquarium;
 
 public enum AnimalType {
     FISH,

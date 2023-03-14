@@ -1,4 +1,4 @@
-package entities;
+package atparkweb.aquarium;
 
 import java.util.ArrayList;
 import java.util.Random;
