@@ -7,8 +7,11 @@ public class SpawningPool {
     private static int getCoord(Random rand) {
         return rand.nextInt(600);
     }
-    private static int getVelocity(Random rand) {
+    private static int getVelocityX(Random rand) {
         return Math.max(rand.nextInt(5), 1);
+    }
+    private static int getVelocityY(Random rand) {
+        return Math.max(rand.nextInt(2), 0);
     }
 
     public static ArrayList<Animal> getAnimals(int numberOfFish, int numberOfPiranhas) {
@@ -24,8 +27,8 @@ public class SpawningPool {
         while (fishCount < numberOfFish && fishCount < MAX_FISH) {
             int x = getCoord(rand);
             int y = getCoord(rand);
-            int vx = getVelocity(rand);
-            int vy = getVelocity(rand);
+            int vx = getVelocityX(rand);
+            int vy = getVelocityY(rand);
             Animal fish = new Animal(x, y, vx, vy, AnimalType.FISH);
             animals.add(fish);
             fishCount++;
@@ -34,8 +37,8 @@ public class SpawningPool {
         while (piranhaCount < numberOfPiranhas && piranhaCount < MAX_PIRANHAS) {
             int x = getCoord(rand);
             int y = getCoord(rand);
-            int vx = getVelocity(rand);
-            int vy = getVelocity(rand);
+            int vx = getVelocityX(rand);
+            int vy = getVelocityY(rand);
             Animal piranha = new Animal(x, y, vx, vy, AnimalType.PIRANHA);
             animals.add(piranha);
             piranhaCount++;
