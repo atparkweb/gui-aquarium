@@ -54,6 +54,7 @@ public class Animal {
 
     public int getX() { return x; }
     public int getY() { return y; }
+    public int getVx() { return vx; }
     public AnimalType getType() { return type; }
     public boolean getIsAlive() { return isAlive; }
 }
