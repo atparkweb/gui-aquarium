@@ -5,6 +5,8 @@ import atparkweb.aquarium.Animal;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.geom.AffineTransform;
+import java.awt.image.AffineTransformOp;
 import java.awt.image.BufferedImage;
 import java.time.Duration;
 import java.time.Instant;
@@ -79,6 +81,12 @@ public class Renderer extends JPanel {
         for (Animal animal : animalList) {
             animal.update();
             BufferedImage spriteImage = spriteSheet.getSpriteImage(animal.getType(), animal.getIsAlive());
+            if (animal.getVx() < 0) {
+                AffineTransform tx = AffineTransform.getScaleInstance(-1, 1);
+                tx.translate(-spriteImage.getWidth(null), 0);
+                AffineTransformOp op = new AffineTransformOp(tx, AffineTransformOp.TYPE_NEAREST_NEIGHBOR);
+                spriteImage = op.filter(spriteImage, null);
+            }
             g.drawImage(spriteImage, animal.getX(), animal.getY(), null, null);
         }
 
