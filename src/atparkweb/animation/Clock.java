@@ -1,4 +1,4 @@
-package atparkweb.utils;
+package atparkweb.animation;
 
 import javax.swing.Timer;
 

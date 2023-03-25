@@ -1,4 +1,4 @@
-package atparkweb.graphics;
+package atparkweb.sprites;
 
 import javax.xml.stream.XMLInputFactory;
 import javax.xml.stream.XMLStreamConstants;

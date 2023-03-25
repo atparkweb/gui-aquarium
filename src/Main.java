@@ -1,5 +1,5 @@
-import atparkweb.graphics.Renderer;
-import atparkweb.graphics.Window;
+import atparkweb.animation.Renderer;
+
 import javax.swing.*;
 
 public class Main {

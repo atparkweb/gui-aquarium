@@ -1,7 +1,7 @@
-package atparkweb.graphics;
+package atparkweb.animation;
 
 import atparkweb.aquarium.SpawningPool;
-import atparkweb.utils.Clock;
+import atparkweb.sprites.SpriteSheet;
 import atparkweb.aquarium.Animal;
 
 import javax.swing.*;

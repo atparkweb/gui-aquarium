@@ -1,4 +1,4 @@
-package atparkweb.graphics;
+package atparkweb.sprites;
 
 import atparkweb.aquarium.AnimalType;
 

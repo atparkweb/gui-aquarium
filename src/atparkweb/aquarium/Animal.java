@@ -37,13 +37,13 @@ public class Animal {
         y += vy;
     }
 
-    public void kill() {
-        isAlive = false;
-    }
-
     public int getX() { return x; }
     public int getY() { return y; }
     public int getVx() { return vx; }
+
+    public void kill() {
+        isAlive = false;
+    }
     public AnimalType getType() { return type; }
     public boolean getIsAlive() { return isAlive; }
 }
