@@ -1,5 +1,6 @@
 package atparkweb.graphics;
 
+import atparkweb.aquarium.SpawningPool;
 import atparkweb.utils.Clock;
 import atparkweb.aquarium.Animal;
 
@@ -20,9 +21,9 @@ public class Renderer extends JPanel {
     private final int height;
     private Instant startedAt;
 
-    public Renderer(SpriteSheet spriteSheet, ArrayList<Animal> animalList, long durationInSeconds, int width, int height) {
-        this.spriteSheet = spriteSheet;
-        this.animalList = animalList;
+    public Renderer(long durationInSeconds, int width, int height) {
+        this.spriteSheet = new SpriteSheet("/fishSpritesheet.png");
+        this.animalList = SpawningPool.getAnimals(5, 2);
         this.width = width;
         this.height = height;
 
