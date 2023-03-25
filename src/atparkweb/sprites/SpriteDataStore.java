@@ -29,7 +29,7 @@ public class SpriteDataStore {
 
         XMLInputFactory inputFactory = XMLInputFactory.newInstance();
 
-        URL resource = SpriteSheet.class.getResource("/fishSpritesheet.xml");
+        URL resource = SpriteDataStore.class.getResource("/fishSpritesheet.xml");
         if (resource == null) throw new NullPointerException("Unable to get resource from path: fishSpritesheet.xml");
 
         InputStream input = Files.newInputStream(Paths.get(resource.toURI()));
