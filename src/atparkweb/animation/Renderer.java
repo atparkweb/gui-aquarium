@@ -42,9 +42,6 @@ public class Renderer extends JPanel {
 
             if (progress >= 1.0) {
                 stopAnimation();
-                for (Animal animal : animalList) {
-                    animal.kill();
-                }
             }
 
             repaint();
