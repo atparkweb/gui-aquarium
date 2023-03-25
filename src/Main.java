@@ -1,10 +1,9 @@
 import atparkweb.animation.Renderer;
 
-import javax.swing.*;
-
 public class Main {
     public static void main(String[] args) {
-        JFrame frame = Window.getInstance();
+        Window frame = new Window(800, 600);
+        frame.setTitle("GUI Aquarium");
         Renderer renderer = new Renderer(30, frame.getWidth(), frame.getHeight());
         frame.add(renderer);
         frame.pack();
