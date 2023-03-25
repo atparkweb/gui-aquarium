@@ -80,8 +80,8 @@ public class Renderer extends JPanel {
         super.paint(g);
         setBackground(Color.blue);
         for (Animal animal : animalList) {
-            animal.update();
             BufferedImage spriteImage = spriteSheet.getSpriteImage(animal.getType(), animal.getIsAlive());
+            animal.update(spriteImage.getWidth(), spriteImage.getHeight());
             if (animal.getVx() < 0) {
                 AffineTransform tx = AffineTransform.getScaleInstance(-1, 1);
                 tx.translate(-spriteImage.getWidth(null), 0);

@@ -1,9 +1,6 @@
 package atparkweb.aquarium;
 
 import atparkweb.graphics.Window;
-import atparkweb.graphics.SpriteDataStore;
-import atparkweb.graphics.SpriteProps;
-import atparkweb.graphics.SpriteSheet;
 
 public class Animal {
     private int x;
@@ -14,14 +11,11 @@ public class Animal {
     private boolean isAlive = true;
     private final AnimalType type;
     private final Window frame;
-    private final SpriteProps sprite;
 
     public Animal(int x, int y, int vx, int vy, AnimalType type) {
         this.type = type;
 
         frame = Window.getInstance();
-        final SpriteDataStore dataStore = SpriteDataStore.getInstance();
-        sprite = dataStore.getSpriteData(SpriteSheet.getSpriteKey(type, isAlive));
 
         this.x = x;
         this.y = y;
@@ -30,17 +24,17 @@ public class Animal {
         this.health = 100;
     }
 
-    public void update() {
+    public void update(int width, int height) {
         if (health == 0) {
             isAlive = false;
             return;
         }
 
-        if (x > frame.getWidth() - sprite.width || x < 0) {
+        if (x > frame.getWidth() - width || x < 0) {
             vx = -vx;
         }
 
-        if (y > frame.getHeight() - sprite.height || y < 0) {
+        if (y > frame.getHeight() - height || y < 0) {
             vy = -vy;
         }
 
