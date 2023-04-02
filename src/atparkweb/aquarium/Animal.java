@@ -1,18 +1,17 @@
 package atparkweb.aquarium;
 
-public class Animal {
-    private int x;
-    private int y;
+import atparkweb.animation.Drawable;
+
+public class Animal extends Drawable {
     private int vx;
     private int vy;
     private boolean isAlive = true;
     private final AnimalType type;
 
     public Animal(int x, int y, int vx, int vy, AnimalType type) {
+        super(x, y);
         this.type = type;
 
-        this.x = x;
-        this.y = y;
         this.vx = vx;
         this.vy = vy;
     }
@@ -38,8 +37,6 @@ public class Animal {
         y += vy;
     }
 
-    public int getX() { return x; }
-    public int getY() { return y; }
     public int getVx() { return vx; }
 
     public void kill() {
