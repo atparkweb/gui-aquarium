@@ -19,6 +19,7 @@ public class Renderer extends JPanel {
     private final SpriteSheet spriteSheet;
     private final int width;
     private final int height;
+    private final SpatialPartition partition;
     private Instant startedAt;
 
     public Renderer(long durationInSeconds, int width, int height) {
@@ -26,6 +27,8 @@ public class Renderer extends JPanel {
         this.animalList = SpawningPool.getAnimals(5, 2);
         this.width = width;
         this.height = height;
+
+        this.partition = new SpatialPartition(10, animalList, width, height);
 
         clock = new Clock();
 
